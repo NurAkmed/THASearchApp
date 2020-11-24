@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search.App", "THA.Search.App\THA.Search.App.csproj", "{17C965FC-291B-4E24-92B8-D7ABB6645BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search", "THA.Search\THA.Search.csproj", "{B2C81538-AEED-40A6-AF3F-63D8B126B772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search.Mocks", "THA.Search.Mocks\THA.Search.Mocks.csproj", "{CEFBDD88-CBD0-49C2-994B-264E4D1B3D82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17C965FC-291B-4E24-92B8-D7ABB6645BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C965FC-291B-4E24-92B8-D7ABB6645BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C965FC-291B-4E24-92B8-D7ABB6645BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C965FC-291B-4E24-92B8-D7ABB6645BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C81538-AEED-40A6-AF3F-63D8B126B772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C81538-AEED-40A6-AF3F-63D8B126B772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C81538-AEED-40A6-AF3F-63D8B126B772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C81538-AEED-40A6-AF3F-63D8B126B772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEFBDD88-CBD0-49C2-994B-264E4D1B3D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFBDD88-CBD0-49C2-994B-264E4D1B3D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFBDD88-CBD0-49C2-994B-264E4D1B3D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFBDD88-CBD0-49C2-994B-264E4D1B3D82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
