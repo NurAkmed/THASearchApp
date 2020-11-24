@@ -6,11 +6,11 @@ namespace THA.Search.Mocks
 {
     public class SearchService : ISearchService
     {
-       private readonly Result[] _data;
+       private readonly Result[] _results;
 
        public SearchService()
        {
-           _data = new[]
+           _results = new[]
            {
                new Result()
                {
@@ -44,6 +44,11 @@ namespace THA.Search.Mocks
            };
        }
 
+       public SearchService(IEnumerable<Result> results)
+       {
+           _results = (Result[])results ?? throw new ArgumentNullException(nameof(results));
+       }
+
        public IReadOnlyCollection<Result> FindResults(string search)
         {
             if (search is null)
@@ -56,9 +61,9 @@ namespace THA.Search.Mocks
                 throw new ArgumentException("Error occured because 'search' string was empty.", nameof(search));
             }
 
-            IReadOnlyCollection<Result> results = _data
+            IReadOnlyCollection<Result> results = _results
                 .Where(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+                .ToArray();
             return results;
         }
     }

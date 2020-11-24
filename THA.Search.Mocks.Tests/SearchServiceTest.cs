@@ -6,31 +6,23 @@ namespace THA.Search.Mocks.Tests
     public class SearchServiceTest
     {
         [Fact]
-        public void CheckForThrowingArgumentNullExceptionWhenStringIsNull()
+        public void CheckWhenSearchStringIsNull()
         {
             SearchService service = new SearchService();
             Assert.Throws<ArgumentNullException>(() => service.FindResults(null));
         }
 
         [Fact]
-        public void CheckForThrowingArgumentExceptionWhenEmptyString()
+        public void CheckWhenSearchStringIsEmpty()
         {
             SearchService service = new SearchService();
             Assert.Throws<ArgumentException>(() => service.FindResults(string.Empty));
         }
 
         [Fact]
-        public void CheckArrayForNotNullWhenElementsContainsASearchWord()
+        public void CheckConstructorForNull()
         {
-            SearchService service = new SearchService();
-            Assert.NotEmpty(service.FindResults("state"));
-        }
-
-        [Fact]
-        public void CheckArrayForNullWhenElementsIsNotContainsASearchWord()
-        {
-            SearchService service = new SearchService();
-            Assert.Empty(service.FindResults("bq"));
+            Assert.Throws<ArgumentNullException>(() => new SearchService(null));
         }
     }
 }

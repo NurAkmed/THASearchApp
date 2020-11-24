@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search.Mocks", "THA.Sea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search.Mocks.Tests", "THA.Search.Mocks.Tests\THA.Search.Mocks.Tests.csproj", "{F8B59FBB-B39C-49C9-A295-EBA90D8AD4DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THA.Search.App.Tests", "THA.Search.App.Tests\THA.Search.App.Tests.csproj", "{4973A70F-ECB7-45A8-B080-95F7779E6E54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{F8B59FBB-B39C-49C9-A295-EBA90D8AD4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8B59FBB-B39C-49C9-A295-EBA90D8AD4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8B59FBB-B39C-49C9-A295-EBA90D8AD4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4973A70F-ECB7-45A8-B080-95F7779E6E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4973A70F-ECB7-45A8-B080-95F7779E6E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4973A70F-ECB7-45A8-B080-95F7779E6E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4973A70F-ECB7-45A8-B080-95F7779E6E54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
