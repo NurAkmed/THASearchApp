@@ -15,11 +15,11 @@ namespace THA.Search.Mocks
 
             if (search.Length == 0)
             {
-                throw new ArgumentException("'search' string is empty", nameof(search));
+                throw new ArgumentException("Error occured because 'search' string was empty", nameof(search));
             }
 
             IReadOnlyCollection<Result> results = Data()
-                .FindAll(c => c.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
+                .FindAll(c => c.Title.Contains(search, StringComparison.OrdinalIgnoreCase))
                 .ToList();
             return results;
         }
