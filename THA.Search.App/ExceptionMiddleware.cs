@@ -5,13 +5,13 @@ using Microsoft.Extensions.Logging;
 
 namespace THA.Search.Mocks
 {
-    public sealed class ExceptionHandlerMiddleware
+    public sealed class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
 
         private readonly ILogger _logger;
 
-        public ExceptionHandlerMiddleware(RequestDelegate next, ILogger logger = null)
+        public ExceptionMiddleware(RequestDelegate next, ILogger logger = null)
         {
             _next = next ?? throw new ArgumentNullException(nameof(next));
             _logger = logger;

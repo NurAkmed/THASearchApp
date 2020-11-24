@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace THA.Search.App.Controllers
 {
-
     [Route("api/[controller]")]
     public class SearchController : Controller
     {

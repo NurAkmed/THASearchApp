@@ -46,7 +46,7 @@ namespace THA.Search.App
                     .Build()
                     .Run();
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 Environment.ExitCode = 1;
                 Log.Fatal(exception, "Host terminated.");

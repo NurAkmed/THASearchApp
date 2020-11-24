@@ -15,7 +15,7 @@ namespace THA.Search.App
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddTransient<ISearchService, SearchService>();
@@ -30,7 +30,7 @@ namespace THA.Search.App
             });
         }
 
-        public void Configure(IApplicationBuilder app)
+        public static void Configure(IApplicationBuilder app)
         {
             app
                 .UseSwagger()
@@ -39,7 +39,7 @@ namespace THA.Search.App
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "SearchApi");
                 });
 
-            app.UseMiddleware<ExceptionHandlerMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
