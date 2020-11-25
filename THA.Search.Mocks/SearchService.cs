@@ -46,7 +46,7 @@ namespace THA.Search.Mocks
 
        public SearchService(IEnumerable<Result> results)
        {
-           _results = (Result[])results ?? throw new ArgumentNullException(nameof(results));
+           _results = results?.ToArray() ?? throw new ArgumentNullException(nameof(results));
        }
 
        public IReadOnlyCollection<Result> FindResults(string search)
