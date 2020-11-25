@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace THA.Search.Mocks
 {
@@ -66,5 +68,10 @@ namespace THA.Search.Mocks
                 .ToArray();
             return results;
         }
+
+       public Task<IReadOnlyCollection<Result>> FindResultsAsync(string search, CancellationToken cancellationToken)
+       {
+           return Task.Run(() => FindResults(search), cancellationToken);
+       }
     }
 }
