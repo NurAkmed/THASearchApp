@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace THA.Search.Mocks.Tests
@@ -6,22 +7,24 @@ namespace THA.Search.Mocks.Tests
     public class SearchServiceTest
     {
         [Fact]
-        public void CheckWhenSearchStringIsNull()
+        public void FindResultsArgumentExceptionsAndEmpty()
         {
             SearchService service = new SearchService();
             Assert.Throws<ArgumentNullException>(() => service.FindResults(null));
-        }
-
-        [Fact]
-        public void CheckWhenSearchStringIsEmpty()
-        {
-            SearchService service = new SearchService();
             Assert.Throws<ArgumentException>(() => service.FindResults(string.Empty));
+            Assert.Empty(service.FindResults(Guid.NewGuid().ToString()));
         }
 
         [Fact]
-        public void CheckConstructorForNull()
+        public void SearchServiceCheck()
         {
+            var moqResults = new[]
+                {
+                    new Result { Id = 1, Description = "description", Title = "title" },
+                };
+            var searchService = new SearchService(moqResults);
+            Assert.IsAssignableFrom<IEnumerable<Result>>(moqResults);
+            Assert.NotNull(searchService);
             Assert.Throws<ArgumentNullException>(() => new SearchService(null));
         }
     }
