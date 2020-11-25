@@ -1,19 +1,22 @@
 using System;
+using System.Threading;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
 using THA.Search.App.Controllers;
-using THA.Search.Mocks;
 using Xunit;
 
 namespace THA.Search.App.Tests
 {
     public class SearchControllerTest
     {
+        private readonly Result[] _moqData = { new Result { Id = 1, Description = "Description", Title = "Title" }, };
+
         [Fact]
-        public void SearchControllerCheckForRequests()
+        public void CheckForRequests()
         {
-            ISearchService service = new SearchService();
-            using var controller = new SearchController(service);
+            var fakeService = A.Fake<ISearchService>();
+            A.CallTo(() => fakeService.FindResults(_moqData[0].Title)).Returns(_moqData);
+            using var controller = new SearchController(fakeService);
             var resultsNull = controller.Get(null);
             Assert.IsType<BadRequestResult>(resultsNull.Result);
             var resultsEmpty = controller.Get(string.Empty);
@@ -23,14 +26,37 @@ namespace THA.Search.App.Tests
         }
 
         [Fact]
-        public void SearchControllerOkResult()
+        public void CheckForOkResult()
         {
-            Result[] moqData = { new Result { Id = 1, Description = "Description", Title = "Title" }, };
             var fakeService = A.Fake<ISearchService>();
-            A.CallTo(() => fakeService.FindResults(moqData[0].Title)).Returns(moqData);
+            A.CallTo(() => fakeService.FindResults(_moqData[0].Title)).Returns(_moqData);
             using var controller = new SearchController(fakeService);
-            var results = controller.Get(moqData[0].Title);
+            var results = controller.Get(_moqData[0].Title);
             Assert.IsType<OkObjectResult>(results.Result);
+        }
+
+        [Fact]
+        public void CheckForRequestsInAsync()
+        {
+            var fakeService = A.Fake<ISearchService>();
+            A.CallTo(() => fakeService.FindResultsAsync(_moqData[0].Title, CancellationToken.None)).Returns(_moqData);
+            using var controller = new SearchController(fakeService);
+            var resultsNull = controller.Get(null, CancellationToken.None);
+            Assert.IsType<BadRequestResult>(resultsNull.Result.Result);
+            var resultsEmpty = controller.Get(string.Empty, CancellationToken.None);
+            Assert.IsType<BadRequestResult>(resultsEmpty.Result.Result);
+            var resultsGuid = controller.Get(Guid.NewGuid().ToString(), CancellationToken.None);
+            Assert.IsType<NoContentResult>(resultsGuid.Result.Result);
+        }
+
+        [Fact]
+        public void CheckForOkResultInAsync()
+        {
+            var fakeService = A.Fake<ISearchService>();
+            A.CallTo(() => fakeService.FindResultsAsync(_moqData[0].Title, CancellationToken.None)).Returns(_moqData);
+            using var controller = new SearchController(fakeService);
+            var results = controller.Get(_moqData[0].Title, CancellationToken.None);
+            Assert.IsType<OkObjectResult>(results.Result.Result);
         }
     }
 }

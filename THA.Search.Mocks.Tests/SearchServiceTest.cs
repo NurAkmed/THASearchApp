@@ -7,7 +7,7 @@ namespace THA.Search.Mocks.Tests
     public class SearchServiceTest
     {
         [Fact]
-        public void FindResultsArgumentExceptionsAndEmpty()
+        public void FindResultsCheck()
         {
             SearchService service = new SearchService();
             Assert.Throws<ArgumentNullException>(() => service.FindResults(null));

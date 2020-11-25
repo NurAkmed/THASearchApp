@@ -19,4 +19,14 @@
     &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.Mocks.Tests" Presentation="&amp;lt;THA.Search.Mocks.Tests&amp;gt;" /&gt;&#xD;
     &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.App.Tests" Presentation="&amp;lt;THA.Search.App.Tests&amp;gt;" /&gt;&#xD;
   &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c0ef3616_002D1402_002D454a_002D813e_002Df775397985d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAsyncMethodOkResult" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::4973A70F-ECB7-45A8-B080-95F7779E6E54::.NETCoreApp,Version=v3.1::THA.Search.App.Tests.SearchControllerTest.GetAsyncMethodOkResult&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ea3a6675_002D9514_002D48ea_002Db4a8_002Dbfc0eb881d41/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAsyncMethodOkResult #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::4973A70F-ECB7-45A8-B080-95F7779E6E54::.NETCoreApp,Version=v3.1::THA.Search.App.Tests.SearchControllerTest.GetAsyncMethodOkResult&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
