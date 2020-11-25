@@ -1,4 +1,5 @@
 using System;
+using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
 using THA.Search.App.Controllers;
 using THA.Search.Mocks;
@@ -6,42 +7,30 @@ using Xunit;
 
 namespace THA.Search.App.Tests
 {
-    public class SearchControllerTest : IDisposable
+    public class SearchControllerTest
     {
-        private readonly SearchController _controller;
-
-        public SearchControllerTest()
+        [Fact]
+        public void SearchControllerCheckForRequests()
         {
             ISearchService service = new SearchService();
-            _controller = new SearchController(service);
+            using var controller = new SearchController(service);
+            var resultsNull = controller.Get(null);
+            Assert.IsType<BadRequestResult>(resultsNull.Result);
+            var resultsEmpty = controller.Get(string.Empty);
+            Assert.IsType<BadRequestResult>(resultsEmpty.Result);
+            var resultsGuid = controller.Get(Guid.NewGuid().ToString());
+            Assert.IsType<NoContentResult>(resultsGuid.Result);
         }
 
         [Fact]
-        public void CheckWhenStringIsNull()
+        public void SearchControllerOkResult()
         {
-            var results = _controller.Get(null);
-            Assert.IsType<BadRequestResult>(results.Result);
-        }
-
-        [Fact]
-        public void CheckWhenStringIsEmpty()
-        {
-            var results = _controller.Get(string.Empty);
-            Assert.IsType<BadRequestResult>(results.Result);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _controller?.Dispose();
-            }
+            Result[] moqData = { new Result { Id = 1, Description = "Description", Title = "Title" }, };
+            var fakeService = A.Fake<ISearchService>();
+            A.CallTo(() => fakeService.FindResults(moqData[0].Title)).Returns(moqData);
+            using var controller = new SearchController(fakeService);
+            var results = controller.Get(moqData[0].Title);
+            Assert.IsType<OkObjectResult>(results.Result);
         }
     }
 }
