@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ResultsList from "../Api/GetSearch";
-import {Button, FormGroup, Input, Table} from "reactstrap/es";
+import {Button, FormGroup, Input} from "reactstrap/es";
 import TableRes from "./Table";
 
 
@@ -15,7 +15,7 @@ class SearchPage extends Component {
         async sendQuery(event: any){
         let searchWord = this.state.search;
         if(searchWord.length < 3) {
-            event.preventDefault();
+            await event.preventDefault();
             await this.setState({error: 'Entered value cannot be less than three symbols'});
         }
         else {
