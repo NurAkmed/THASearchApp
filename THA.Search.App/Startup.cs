@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using THA.Search.Mocks;
+using THA.Search.Mock;
 
 namespace THA.Search.App
 {
     public class Startup
     {
+        private const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -18,6 +20,16 @@ namespace THA.Search.App
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins(
+                            "http://localhost:3000");
+                    });
+            });
             services.AddTransient<ISearchService>(options => new SearchService());
             services.AddSwaggerGen(options =>
             {
@@ -38,8 +50,8 @@ namespace THA.Search.App
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "SearchApi");
                 });
-
             app.UseRouting();
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
