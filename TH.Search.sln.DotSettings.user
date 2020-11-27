@@ -1,4 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f30ecd6_002D9a2f_002D42d4_002Db1d7_002D1b088efffd27/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;THA.Search.Mock.Tests&amp;gt; #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.Mock.Tests" Presentation="&amp;lt;THA.Search.Mock.Tests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5301a386_002D7f8f_002D4295_002D80f1_002Dd8c49ddb3310/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;THA.Search.Mocks.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.Mocks.Tests" Presentation="&amp;lt;THA.Search.Mocks.Tests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
@@ -24,6 +27,12 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::4973A70F-ECB7-45A8-B080-95F7779E6E54::.NETCoreApp,Version=v3.1::THA.Search.App.Tests.SearchControllerTest.GetAsyncMethodOkResult&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e77e3029_002D775e_002D4756_002D86fd_002D1a0e2d4a4017/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;THA.Search.Mock.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.Mock.Tests" Presentation="&amp;lt;THA.Search.Mock.Tests&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="D:\Сsharp\SearchReact_Back-master\THA.Search.App.Tests" Presentation="&amp;lt;THA.Search.App.Tests&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ea3a6675_002D9514_002D48ea_002Db4a8_002Dbfc0eb881d41/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetAsyncMethodOkResult #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;

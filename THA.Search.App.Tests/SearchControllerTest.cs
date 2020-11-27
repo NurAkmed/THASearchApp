@@ -12,31 +12,33 @@ namespace THA.Search.App.Tests
         private readonly Result[] _moqData = { new Result { Id = 1, Description = "Description", Title = "Title" }, };
 
         [Fact]
-        public void CheckForRequests()
+        public void GetBadRequest()
         {
             var fakeService = A.Fake<ISearchService>();
             A.CallTo(() => fakeService.FindResults(_moqData[0].Title)).Returns(_moqData);
+
             using var controller = new SearchController(fakeService);
             var resultsNull = controller.Get(null);
             Assert.IsType<BadRequestResult>(resultsNull.Result);
             var resultsEmpty = controller.Get(string.Empty);
             Assert.IsType<BadRequestResult>(resultsEmpty.Result);
-            var resultsGuid = controller.Get(Guid.NewGuid().ToString());
-            Assert.IsType<NoContentResult>(resultsGuid.Result);
         }
 
         [Fact]
-        public void CheckForOkResult()
+        public void GetOk()
         {
             var fakeService = A.Fake<ISearchService>();
             A.CallTo(() => fakeService.FindResults(_moqData[0].Title)).Returns(_moqData);
+
             using var controller = new SearchController(fakeService);
+            var resultsGuid = controller.Get(Guid.NewGuid().ToString());
+            Assert.IsType<NoContentResult>(resultsGuid.Result);
             var results = controller.Get(_moqData[0].Title);
             Assert.IsType<OkObjectResult>(results.Result);
         }
 
         [Fact]
-        public void CheckForRequestsInAsync()
+        public void GetAsyncBadRequest()
         {
             var fakeService = A.Fake<ISearchService>();
             A.CallTo(() => fakeService.FindResultsAsync(_moqData[0].Title, CancellationToken.None)).Returns(_moqData);
@@ -50,7 +52,7 @@ namespace THA.Search.App.Tests
         }
 
         [Fact]
-        public void CheckForOkResultInAsync()
+        public void GetAsyncOk()
         {
             var fakeService = A.Fake<ISearchService>();
             A.CallTo(() => fakeService.FindResultsAsync(_moqData[0].Title, CancellationToken.None)).Returns(_moqData);

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THA.Search.Mocks\THA.Search.Mocks.csproj" />
+    <ProjectReference Include="..\THA.Search.Mock\THA.Search.Mock.csproj" />
     <ProjectReference Include="..\THA.Search\THA.Search.csproj" />
   </ItemGroup>
 
