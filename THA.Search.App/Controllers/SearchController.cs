@@ -38,7 +38,7 @@ namespace THA.Search.App.Controllers
             return NoContent();
         }
 
-        [HttpGet("{search}")]
+        [HttpGet("async/{search}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Result>))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
