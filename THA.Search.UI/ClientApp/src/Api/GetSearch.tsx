@@ -1,13 +1,16 @@
 import axios from "axios";
 
-
-async function ResultsList(search: string){
+export interface objectResult {
+    id: number;
+    title: string;
+    description: string;
+}
+async function getResults(query: string){
     try {
-        const a = await axios.get('http://localhost:85/api/search/' + search);
-        return a.data;
+        const response = await axios.get<objectResult[]>('http://localhost:85/api/search/' + query);
+        return response.data;
     } catch (e) {
         return [];
     }
-
 }
-export default ResultsList;
+export default getResults;

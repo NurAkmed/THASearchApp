@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchPage from "./SearchPage";
+import Search from "./Search";
 
 
 
@@ -7,7 +7,7 @@ const App = () => {
 
     return (
         <div className="App container">
-          <SearchPage />
+         <Search />
         </div>
     );
 }
