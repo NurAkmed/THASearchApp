@@ -1,4 +1,4 @@
-import {objectResult} from "../Api/GetSearch";
+import {objectResult} from "../Api/GetResults";
 import React from "react";
 import '../СSS/RenderSearchResults.css';
 

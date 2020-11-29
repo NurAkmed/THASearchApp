@@ -1,6 +1,6 @@
 import React from 'react';
-import {objectResult} from "../Api/GetSearch";
-import getResults from "../Api/GetSearch";
+import {objectResult} from "../Api/GetResults";
+import getResults from "../Api/GetResults";
 import RenderSearchResults from "./RenderSearchResults";
 import '../СSS/Search.css';
 import RenderResultDescription from "./RenderResultDescription";
