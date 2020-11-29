@@ -3,8 +3,8 @@ import {objectResult} from "../Api/GetSearch";
 import getResults from "../Api/GetSearch";
 import RenderSearchResults from "./RenderSearchResults";
 import '../СSS/Search.css';
-import {Input} from "reactstrap/es";
 import RenderResultDescription from "./RenderResultDescription";
+import SearchInput from "./SearchInput";
 
 interface IState {
     results: objectResult[],
@@ -31,14 +31,14 @@ class Search extends React.Component<any, IState> {
 
     inputChange = async (event: any) => {
         const query = await event.target.value;
-        if ( ! query ) {
-            this.setState({ query, results: [], message: '' } );
+        if (!query) {
+            this.setState({query, results: [], message: ''});
         }
         else if(query.length < 3){
-            this.setState({ query, results: [], message: 'Минимум три символа' } );
+            this.setState({query, results: [], message: 'Минимум три символа'});
         }
         else {
-            this.setState({ query, message: '' }, () => {
+            this.setState({query, message: ''}, () => {
                 this.getSearchResults(query);
             });
         }
@@ -50,19 +50,10 @@ class Search extends React.Component<any, IState> {
                     <RenderResultDescription key={result.id} id={result.id} title={result.title} description={result.description} />
                 );
             })
-        const { query } = this.state;
         return (
             <div>
-            <div className='searchBlock'>
-                <div className="p-1 bg-light rounded rounded-pill shadow-sm mt-4">
-                    <div className="input-group">
-                        <Input type="search" value={query}
-                               placeholder="Что ищем?"
-                               className="form-control border-0 bg-light"
-                               onChange={this.inputChange}
-                        />
-                    </div>
-                </div>
+              <div className='searchBlock'>
+                  <SearchInput query={this.state.query} inputChange={this.inputChange} />
                 <div>
                   <RenderSearchResults results={this.state.results}
                                     stateUpdatingCallback={(selectedObject: objectResult) =>
@@ -81,7 +72,7 @@ class Search extends React.Component<any, IState> {
                   />
                    <p className='text-center text-danger'>{this.state.message}</p>
                 </div>
-            </div>
+              </div>
                 {resultDescription}
             </div>
         )
