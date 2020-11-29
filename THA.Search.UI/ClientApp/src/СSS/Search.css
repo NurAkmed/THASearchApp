@@ -1,0 +1,36 @@
+.searchBlock{
+    display: table;
+    margin: 0 auto;
+    width: 400px;
+    height: 100%;
+}
+.searchResults{
+    margin: 0 auto;
+    width: 400px;
+    border-radius: 2%;
+    border: #19547b 1px;
+}
+.form-control{
+    border-radius: 15%!important;
+}
+.form-control:focus {
+    box-shadow: none!important;
+}
+
+.form-control-underlined {
+    margin-top: 10px;
+    border-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+body {
+
+
+    background: linear-gradient(to right, #fff, #c2c2c2);
+    min-height: 100vh;
+}

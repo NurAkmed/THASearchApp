@@ -1,0 +1,16 @@
+.resultsBlockLink{
+    padding-top: 15px;
+    padding-bottom: 1px;
+    border-radius: 2%;
+}
+.resultsBlockLink:hover{
+    cursor: pointer;
+    background: #aaaaaa;
+    padding-top: 15px;
+    padding-bottom: 1px;
+    border-radius: 2%;
+}
+.resultsBlock{
+     border-radius: 2%;
+    box-shadow: 0px 6px 8px -4px rgba(0,0,0,0.64);
+ }
