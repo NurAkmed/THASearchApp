@@ -23,7 +23,7 @@ class Search extends React.Component<any, IState> {
     getSearchResults = async (query: string) => {
         let response = await getResults(query);
         let error = '';
-                if(response.length === 0){
+                if(!response.length){
                     error = 'Нет результатов';
                 }
                 this.setState({results: response, message: error});
