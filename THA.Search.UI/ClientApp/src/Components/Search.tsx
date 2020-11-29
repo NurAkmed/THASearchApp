@@ -29,6 +29,18 @@ class Search extends React.Component<any, IState> {
                 this.setState({results: response, message: error});
     };
 
+    removeResult(sel: objectResult)
+        {this.setState(state =>
+          {
+            const selected = state.selected.filter(item => item.title !== sel.title)
+            return {
+                selected,
+                query: '',
+                results: []
+            };
+          });
+        };
+
     inputChange = async (event: any) => {
         const query = await event.target.value;
         if (!query) {
@@ -47,7 +59,7 @@ class Search extends React.Component<any, IState> {
     render() {
         let resultDescription = this.state.selected.map((result: objectResult) => {
                 return (
-                    <RenderResultDescription key={result.id} id={result.id} title={result.title} description={result.description} />
+                    <RenderResultDescription key={result.id} result={result} removeItem={(s: objectResult)=>this.removeResult(s)}/>
                 );
             })
         return (
