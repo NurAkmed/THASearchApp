@@ -6,7 +6,7 @@ import Search from "./Search";
 const App = () => {
 
     return (
-        <div className="App container">
+        <div className="app-container">
          <Search />
         </div>
     );

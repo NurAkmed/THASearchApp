@@ -7,9 +7,11 @@ export interface objectResult {
 }
 async function getResults(query: string){
     try {
-        const response = await axios.get<objectResult[]>('http://localhost:85/api/search/' + query);
+        let URL = 'http://localhost:85/api/search/';
+        const response = await axios.get<objectResult[] | undefined>(URL + query);
         return response.data;
     } catch (e) {
+        console.log(e);
         return [];
     }
 }

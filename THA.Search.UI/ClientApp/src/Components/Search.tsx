@@ -10,29 +10,57 @@ interface IState {
     results: objectResult[],
         query: string,
         message: string,
-        selected: objectResult[]
+        selected: objectResult[],
 }
 class Search extends React.Component<any, IState> {
     state = {
             results: [],
             query: '',
             message: '',
-            selected: []
+            selected: [],
     }
 
     getSearchResults = async (query: string) => {
         let response = await getResults(query);
         let error = '';
-                if(!response.length){
-                    error = 'Нет результатов';
+                if(response){
+                    this.setState({results: response, message: error});
                 }
-                this.setState({results: response, message: error});
     };
 
-    removeResult(sel: objectResult)
+    displayResult = (sel: objectResult) =>
+    {this.setState(state =>
+     {
+        const selected = state.selected.some(val=> sel.title === val.title)
+            ? state.selected
+            : state.selected.concat(sel);
+        return {
+            selected,
+            query: '',
+            results: []
+        };
+     });
+    }
+    onPressingEnter = (event: any) => {
+        if (event.key === 'Enter') {
+            this.setState(state =>
+            {
+                const selected = !state.results.some(item => item.title.includes(event.target.value))
+                    ? this.state.selected
+                    : state.results.filter(item => item.title.includes(event.target.value))
+
+                return {
+                    selected,
+                    query: '',
+                    results: []
+                };
+            });
+        }
+    }
+    removeResult = (sel: objectResult) =>
         {this.setState(state =>
           {
-            const selected = state.selected.filter(item => item.title !== sel.title)
+              const selected = state.selected.filter(item => item.title !== sel.title)
             return {
                 selected,
                 query: '',
@@ -59,29 +87,17 @@ class Search extends React.Component<any, IState> {
     render() {
         let resultDescription = this.state.selected.map((result: objectResult) => {
                 return (
-                    <RenderResultDescription key={result.id} result={result} removeItem={(s: objectResult)=>this.removeResult(s)}/>
+                    <RenderResultDescription key={result.id} result={result} removeItem={(s: objectResult) => this.removeResult(s)} />
                 );
             })
         return (
             <div>
               <div className='searchBlock'>
-                  <SearchInput query={this.state.query} inputChange={this.inputChange} />
+                  <SearchInput query = {this.state.query} inputChange = {this.inputChange} onPressingEnter = {this.onPressingEnter}/>
                 <div>
                   <RenderSearchResults results={this.state.results}
-                                    stateUpdatingCallback={(selectedObject: objectResult) =>
-                                    {this.setState(state =>
-                                      {
-                                        const selected = state.selected.some(val=> selectedObject.title === val.title)
-                                            ? state.selected
-                                            : state.selected.concat(selectedObject);
-                                        return {
-                                            selected,
-                                            query: '',
-                                            results: []
-                                        };
-                                      });
-                                    }}
-                  />
+                                       stateUpdatingCallback = {(obj: objectResult) => this.displayResult(obj)} />
+
                    <p className='text-center text-danger'>{this.state.message}</p>
                 </div>
               </div>

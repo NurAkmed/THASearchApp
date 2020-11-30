@@ -4,10 +4,12 @@ import {Input} from "reactstrap/es";
 
 const SearchInput = ({
                          query,
-                         inputChange
+                         inputChange,
+                         onPressingEnter
                      }: {
     query: string;
     inputChange: (event: any) => void;
+    onPressingEnter: (event: any) => void;
 }) => {
     return(
         <div className="p-1 bg-light rounded rounded-pill shadow-sm mt-4">
@@ -16,6 +18,7 @@ const SearchInput = ({
                        placeholder="Что ищем?"
                        className="form-control border-0 bg-light"
                        onChange={inputChange}
+                       onKeyDown={onPressingEnter}
                 />
             </div>
         </div>
